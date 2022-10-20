@@ -1,11 +1,28 @@
 import React from "react";
-import { View, Text } from "react-native-web";
+import { View, Text, StyleSheet } from "react-native";
 
 const App = () => {
   return (
-    <View>
-      <Text>This is first React-Native Programme</Text>
+    <View style={className.container}>
+      <Text style={className.para}>This is first React-Native Programme</Text>
+      <Text style={className.para}>
+        Day 1 Completed with Text and Design Part
+      </Text>
     </View>
   );
 };
+
+const className = StyleSheet.create({
+  container: {
+    backgroundColor: "blue",
+    padding: 30,
+  },
+
+  para: {
+    color: "white",
+    fontSize: 20,
+    textAlign: "center",
+    margin: 10,
+  },
+});
 export default App;
