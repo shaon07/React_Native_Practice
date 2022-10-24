@@ -1,14 +1,10 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
-import List from "../../Components/List";
+import { StyleSheet, View } from "react-native";
 
 const HomeScreen = () => {
   return (
     <View style={className.container}>
-      <Text style={className.header}>Todays Task List</Text>
-      <List title="Make A Components" />
-      <List title="import and call in another file" />
-      <List title="add style and className" />
+
     </View>
   );
 };
