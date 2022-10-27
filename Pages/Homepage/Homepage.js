@@ -1,37 +1,30 @@
-import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-const Homepage = ({ navigation }) => {
+import Header from "../../Components/Header/Header";
+import TextBody from "../../Components/TextBody/TextBody";
 
-  const handleNavigate = () => {
-    navigation.push("Profile")
-  }
 
+const Homepage = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>This is homepage</Text>
-      <TouchableOpacity style={styles.touchable} onPress={handleNavigate}>
-        <Text style={{ color: "white" }}>Goto Profile</Text>
-      </TouchableOpacity>
-    </View>
+    <SafeAreaView style={styles.homePageContainer}>
+      <Header />
+      <TextBody />
+    </SafeAreaView>
   )
 }
 
 export default Homepage;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  homePageContainer: {
+    backgroundColor: "black",
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
   },
-  touchable: {
-    backgroundColor: "blue",
-    padding: 10,
-    margin: 5,
-  },
-  heading: {
-    fontSize: 20,
-    marginBottom: 10
-  }
+
 })

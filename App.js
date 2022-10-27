@@ -2,12 +2,7 @@ import { StyleSheet } from 'react-native';
 import Routes from "./Routes/Routes";
 
 export default function App() {
-  return (
-    <Routes />
-    // <View style={styles.container}>
-    //   <Text>Home Page </Text>
-    // </View>
-  );
+  return <Routes />
 }
 
 const styles = StyleSheet.create({
