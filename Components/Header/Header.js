@@ -1,46 +1,39 @@
 import { faRotate } from '@fortawesome/free-solid-svg-icons/faRotate';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import React, { useEffect, useState } from 'react';
+import { useNavigation } from "@react-navigation/native";
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const Header = () => {
+import { LogBox } from 'react-native';
 
-  const [countryName, setCountryName] = useState([])
+LogBox.ignoreLogs([
+  'Non-serializable values were found in the navigation state',
+]);
 
-  const options = {
-    method: 'GET',
-    headers: {
-      'Accept-Encoding': 'application/gzip',
-      'X-RapidAPI-Key': '76b2aef6b3msh0e774d18ce1b12cp1b99fcjsnc15ea215f65d',
-      'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com'
-    }
-  };
+const Header = ({ countryName, firstCountryName, setFirstCountryName, secondCountryName, setSecondCountryName }) => {
 
-  useEffect(() => {
-    fetch('https://google-translate1.p.rapidapi.com/language/translate/v2/languages?target=en', options)
-      .then(response => response.json())
-      .then(response => setCountryName(response.data.languages))
-      .catch(err => console.error(err));
-  }, [])
-
-  console.log(countryName)
+  const navigation = useNavigation();
 
   return (
+
     <View style={styles.homePageHeader}>
       <View style={styles.TranslateLang}>
-        <Text style={styles.selectText}>English</Text>
-        <FontAwesomeIcon icon={faRotate} style={styles.rotateIcon} size={30} />
-        <Text style={styles.selectText}>Bangla</Text>
-      </View>
-
-      <View style={styles.selectLang}>
-        <Text style={styles.LangText}>
-          Select Country
+        <Text style={styles.selectText}
+          onPress={() => navigation.navigate("Language",
+            { countryName, setCountryName: setFirstCountryName }
+          )}>
+          {firstCountryName.name}
         </Text>
 
+        <FontAwesomeIcon icon={faRotate} style={styles.rotateIcon} size={30} />
 
+        <Text style={styles.selectText}
+          onPress={() => navigation.navigate("Language",
+            { countryName, setCountryName: setSecondCountryName })}
+        >
+          {secondCountryName.name}
+        </Text>
       </View>
-
     </View>
   )
 }

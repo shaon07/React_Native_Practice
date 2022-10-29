@@ -1,13 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-const TextBody = () => {
-
-  const [value, setValue] = useState("");
-
-  const onChangeText = (v) => {
-    setValue(v)
-  }
+const TextBody = ({ onChangeText, value, handlePost, translatedText }) => {
 
   return (
 
@@ -27,19 +21,21 @@ const TextBody = () => {
 
         </View>
       </ScrollView>
+
       <ScrollView style={styles.bodyTranslateText}>
         <View>
           <Text style={[styles.translateText, styles.bodyText]}>
-            {value}
+            {translatedText}
           </Text>
         </View>
       </ScrollView>
 
       <View style={styles.buttonWrapper}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Copy</Text>
+        <TouchableOpacity style={styles.button} onPress={handlePost}>
+          <Text style={styles.buttonText}>Translate</Text>
         </TouchableOpacity>
       </View>
+
     </View>
 
   )
